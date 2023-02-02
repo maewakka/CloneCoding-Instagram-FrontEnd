@@ -1,0 +1,58 @@
+.follow_container {
+    width: 400px;
+    height: 80%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #c1c1c1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: inherit;
+    overflow: auto;
+    padding: 20px 20px 20px 20px
+}
+
+.user_container {
+    width: 100%;
+    height: 90px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #c1c1c1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.text {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.follow {
+    color: #4848ff;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.unfollow {
+    color: red;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.follow:hover, .unfollow:hover {
+    cursor: pointer;
+}

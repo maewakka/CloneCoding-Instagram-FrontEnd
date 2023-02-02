@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const headers = {
+    'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem("accessToken"),
     'Access-Control-Allow-Origin': '*',
 }
