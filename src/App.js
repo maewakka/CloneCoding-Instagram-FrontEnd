@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
+import UserContainer from "./pages/user/UserContainer";
+import SignIn from "./pages/user/SignIn";
+import SignUp from "./pages/user/SignUp";
+import MainContainer from "./pages/MainContainer";
+import HomeContainer from "./pages/home/HomeContainer";
+import FollowContainer from "./pages/follow/FollowContainer";
+import SearchContainer from "./pages/serach/SearchContainer";
+import MessageContainer from "./pages/message/MessageContainer";
+import PostContainer from "./pages/post/PostContainer";
+import ProfileContainer from "./pages/profile/ProfileContainer";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/users" element={<UserContainer/>}>
+            <Route path='sign-in' element={<SignIn/>}/>
+            <Route path='sign-up' element={<SignUp/>}/>
+        </Route>
+        <Route path="/outstagram" element={<MainContainer/>}>
+            <Route path="home" element={<HomeContainer/>}/>
+            <Route path='follow' element={<FollowContainer/>}/>
+            <Route path='search' element={<SearchContainer/>}/>
+            <Route path='message' element={<MessageContainer/>}/>
+            <Route path='post' element={<PostContainer/>}/>
+            <Route path='profile' element={<ProfileContainer/>}/>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
