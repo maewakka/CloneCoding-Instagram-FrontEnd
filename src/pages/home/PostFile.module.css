@@ -1,0 +1,53 @@
+.post_file_container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.post_file {
+    width: 100%;
+    height: 500px;
+    display: inherit;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.post_file_arrow_left {
+    position: absolute;
+    background-color: #c1c1c1;
+    margin-left: 5px;
+    opacity: 0.8;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+}
+
+.post_file_arrow_right {
+    position: absolute;
+    background-color: #c1c1c1;
+    margin-left: 465px;
+    opacity: 0.8;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+}
+
+.post_file_arrow_left:hover, .post_file_arrow_right:hover {
+    cursor: pointer;
+}

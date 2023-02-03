@@ -46,6 +46,8 @@ const PostContainer = () => {
             return;
         }
 
+        console.log(write);
+
         const formData = new FormData();
         const size = files.length;
 

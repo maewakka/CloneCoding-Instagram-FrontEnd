@@ -47,7 +47,7 @@ const PostFile = (props) => {
                     <i className="bi bi-arrow-left-circle-fill" onClick={fileNumDec}/>
                     {thumbFile.type === 'image' ?
                         <img className={style.thumbnail} src={thumbFile.src} /> :
-                        <video className={style.thumbnail} controls='true' src={thumbFile.src}>
+                        <video className={style.thumbnail} controls src={thumbFile.src}>
                         </video>
                     }
                     <i className="bi bi-arrow-right-circle-fill"  onClick={fileNumInc}/>
