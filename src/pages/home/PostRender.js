@@ -2,11 +2,27 @@ import React from 'react';
 import style from './PostRender.module.css';
 import {Static_Base_Url} from "../../index";
 import PostFile from "./PostFile";
+import withJwtAxios from "../../components/axios/withJwtAxios";
 const PostRender = (props) => {
     const postList = props.postList;
+    const setPostList = props.setPostList;
     const postIndex = props.postIndex;
     const onClickLeft = props.onClickLeft;
     const onClickRight = props.onClickRight;
+
+    const setLike = (postId) => {
+        withJwtAxios.get("/like", {params: {postId: postId}})
+            .then((res) => {
+                setPostList(res.data.postList);
+            });
+    }
+
+    const deleteLike = (postId) => {
+        withJwtAxios.delete("/like", {params: {postId: postId}})
+            .then((res) => {
+                setPostList(res.data.postList);
+            });
+    }
 
     return (
         <>
@@ -34,7 +50,11 @@ const PostRender = (props) => {
                             {/* 게시글의 좋아요, 댓글들을 보여주는 부분 */}
                             <div className={style.post_icon_container}>
                                 <div className={style.post_icon}>
-                                    <i className='bi bi-suit-heart fs-3'/>
+                                    {
+                                        !post.like ?
+                                            <i className='bi bi-suit-heart fs-3' onClick={() => setLike(post.postId)}/>:
+                                            <i className='bi bi-suit-heart-fill fs-3' onClick={() => deleteLike(post.postId)} style={{color: 'red'}}/>
+                                    }
                                     <i className='bi bi-chat fs-3' style={{marginLeft: '10px'}}/>
                                 </div>
                                 <div className={style.post_icon_num}>

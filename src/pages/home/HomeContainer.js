@@ -36,7 +36,7 @@ const HomeContainer = () => {
 
     return (
         <div className={style.home_container}>
-            <PostRender postList={postList} postIndex={postIndex} onClickLeft={onClickLeft} onClickRight={onClickRight}/>
+            <PostRender postList={postList} setPostList={setPostList} postIndex={postIndex} onClickLeft={onClickLeft} onClickRight={onClickRight}/>
         </div>
     );
 };
