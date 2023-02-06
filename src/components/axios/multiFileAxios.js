@@ -16,6 +16,7 @@ multiFileAxios.interceptors.response.use(
         return response;
     },
     (error) => {
+        alert(error.response.data);
         return Promise.reject(error);
     }
 );

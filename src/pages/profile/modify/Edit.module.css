@@ -1,0 +1,73 @@
+.thumbnail_container {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.thumbnail_box {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #c1c1c1;
+}
+
+.nickname_box {
+    width: 70%;
+    height: 140%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.nickname {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.thumbnail_edit_button {
+    font-weight: bold;
+    color: #4848ff;
+}
+
+.thumbnail_edit_button:hover, .thumbnail:hover {
+    cursor: pointer;
+}
+
+.input_box {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.label {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.input {
+    width: 50%;
+    height: 140%;
+    border: 1px solid #c1c1c1;
+    border-radius: 2px;
+    padding-left: 10px;
+}

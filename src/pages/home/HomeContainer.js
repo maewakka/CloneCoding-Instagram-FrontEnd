@@ -7,12 +7,14 @@ const HomeContainer = () => {
 
     const [postList, setPostList] = useState(); // 게시글 리스트
     const [postIndex, setPostIndex] = useState(); // 게시글의 파일 순서에 대한 처리를 위한 배열
+    const [chatIsOpen, setChatIsOpen] = useState(); // 게시글 댓글 모달 창 처리를 위한 배열
 
     useEffect(() => {
         withJwtAxios.get('/post-list')
             .then((res) => {
                 setPostList(res.data.postList);
                 setPostIndex(new Array(res.data.postList.length).fill(0));
+                setChatIsOpen(new Array(res.data.postList.length).fill(false));
             });
     }, [])
 
@@ -36,7 +38,7 @@ const HomeContainer = () => {
 
     return (
         <div className={style.home_container}>
-            <PostRender postList={postList} setPostList={setPostList} postIndex={postIndex} onClickLeft={onClickLeft} onClickRight={onClickRight}/>
+            <PostRender postList={postList} setPostList={setPostList} postIndex={postIndex} chatIsOpen={chatIsOpen} setChatIsOpen={setChatIsOpen} onClickLeft={onClickLeft} onClickRight={onClickRight}/>
         </div>
     );
 };

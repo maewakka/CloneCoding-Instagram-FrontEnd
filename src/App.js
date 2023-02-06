@@ -10,6 +10,9 @@ import SearchContainer from "./pages/serach/SearchContainer";
 import MessageContainer from "./pages/message/MessageContainer";
 import PostContainer from "./pages/post/PostContainer";
 import ProfileContainer from "./pages/profile/ProfileContainer";
+import ProfileEdit from "./pages/profile/modify/ProfileEdit";
+import Edit from "./pages/profile/modify/Edit";
+import Password from "./pages/profile/modify/Password";
 
 const App = () => {
   return (
@@ -26,6 +29,10 @@ const App = () => {
             <Route path='message' element={<MessageContainer/>}/>
             <Route path='post' element={<PostContainer/>}/>
             <Route path='profile' element={<ProfileContainer/>}/>
+            <Route path='profile-edit' element={<ProfileEdit/>}>
+                <Route path='edit' element={<Edit/>}/>
+                <Route path='password' element={<Password/>}/>
+            </Route>
         </Route>
       </Routes>
     </Router>

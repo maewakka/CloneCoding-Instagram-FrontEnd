@@ -3,12 +3,16 @@ import style from './PostRender.module.css';
 import {Static_Base_Url} from "../../index";
 import PostFile from "./PostFile";
 import withJwtAxios from "../../components/axios/withJwtAxios";
+import PostChat from "./PostChat";
+import {Modal} from "react-bootstrap";
 const PostRender = (props) => {
     const postList = props.postList;
     const setPostList = props.setPostList;
     const postIndex = props.postIndex;
     const onClickLeft = props.onClickLeft;
     const onClickRight = props.onClickRight;
+    const chatIsOpen = props.chatIsOpen;
+    const setChatIsOpen = props.setChatIsOpen;
 
     const setLike = (postId) => {
         withJwtAxios.get("/like", {params: {postId: postId}})
@@ -22,6 +26,18 @@ const PostRender = (props) => {
             .then((res) => {
                 setPostList(res.data.postList);
             });
+    }
+
+    const onClickChat = (idx) => {
+        const temp = JSON.parse(JSON.stringify(chatIsOpen));
+        temp[idx] = true
+        setChatIsOpen(temp);
+    }
+
+    const onClickExitChat = (idx) => {
+        const temp = JSON.parse(JSON.stringify(chatIsOpen));
+        temp[idx] = false;
+        setChatIsOpen(temp);
     }
 
     return (
@@ -52,10 +68,11 @@ const PostRender = (props) => {
                                 <div className={style.post_icon}>
                                     {
                                         !post.like ?
-                                            <i className='bi bi-suit-heart fs-3' onClick={() => setLike(post.postId)}/>:
-                                            <i className='bi bi-suit-heart-fill fs-3' onClick={() => deleteLike(post.postId)} style={{color: 'red'}}/>
+                                            <i className='bi bi-suit-heart fs-3' style={{cursor: 'pointer'}} onClick={() => setLike(post.postId)}/>:
+                                            <i className='bi bi-suit-heart-fill fs-3' style={{cursor: 'pointer'}} onClick={() => deleteLike(post.postId)} style={{color: 'red'}}/>
                                     }
-                                    <i className='bi bi-chat fs-3' style={{marginLeft: '10px'}}/>
+                                    <i className='bi bi-chat fs-3' style={{marginLeft: '10px', cursor: 'pointer'}} onClick={() => onClickChat(idx)}/>
+                                    <PostChat isOpen={chatIsOpen[idx]} chatIsOpen={chatIsOpen} onClickExitChat={onClickExitChat} idx={idx} postId={post.postId}/>
                                 </div>
                                 <div className={style.post_icon_num}>
                                     <div style={{marginRight: '10px'}}>

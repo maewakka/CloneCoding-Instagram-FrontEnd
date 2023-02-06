@@ -1,0 +1,64 @@
+.profile_container {
+    width: 80%;
+    height: 30%;
+    border-bottom: 1px solid #c1c1c1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding-left: 15%;
+    padding-bottom: 30px;
+}
+
+.post_container {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: nowrap;
+    overflow: auto;
+    position: relative;
+}
+
+.post_container::-webkit-scrollbar {
+    display: none;
+}
+
+.profile_thumbnail {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #c1c1c1;
+    object-fit: cover;
+}
+
+.profile_container_head {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.nickname {
+    font-size: xx-large;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+.profile_count {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.count {
+    font-size: smaller;
+    font-weight: bold;
+    margin-right: 20px;
+}
