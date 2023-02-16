@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import ChatRoomList from "./ChatRoomList";
 
 const MessageContainer = () => {
     return (
-        <div>
-            Message
-        </div>
+        <>
+            <ChatRoomList/>
+        </>
     );
 };
 

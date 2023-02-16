@@ -1,12 +1,13 @@
 import React from 'react';
 import style from './SideBar.module.css';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Static_Base_Url} from "../../index";
 
 const SideBar = () => {
 
     const userDetail = useSelector(state => state.userDetail);
+    const navigate = useNavigate();
 
     const sideBar = [
         {link: '/outstagram/home', name: '홈', iclass: 'bi bi-instagram fs-3'},
@@ -16,6 +17,11 @@ const SideBar = () => {
         {link: '/outstagram/post', name: '만들기', iclass: 'bi bi-plus-square fs-3'},
         {link: '/outstagram/profile', name: '프로필'}
     ]
+
+    const logout = () => {
+        window.localStorage.clear();
+        navigate("/users/sign-in")
+    }
 
     return (
         <>
@@ -47,8 +53,23 @@ const SideBar = () => {
                 })}
             </div>
 
-            <div>
-
+            <div className="dropup-center dropup" style={{width: '100%'}}>
+                <div className={style.side_menu} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i className="bi bi-list fs-2"/>
+                    <div className={style.side_menu_text}>더 보기</div>
+                </div>
+                <ul className="dropdown-menu">
+                    <li>
+                        <div className='dropdown-item' style={{cursor: 'pointer'}} onClick={logout}>
+                            로그아웃
+                        </div>
+                    </li>
+                    <li>
+                        <div className='dropdown-item' style={{cursor: 'pointer'}} onClick={() => {navigate("/outstagram/profile-edit/edit")}}>
+                            프로필 수정
+                        </div>
+                    </li>
+                </ul>
             </div>
         </>
     );

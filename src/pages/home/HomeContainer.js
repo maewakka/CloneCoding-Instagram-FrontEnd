@@ -18,6 +18,13 @@ const HomeContainer = () => {
             });
     }, [])
 
+    useEffect(() => {
+        withJwtAxios.get('/post-list')
+            .then((res) => {
+                setPostList(res.data.postList);
+            });
+    }, [chatIsOpen])
+
     // 왼쪽 버튼을 눌렸을 때, 파일의 인덱스를 1 감소시킨다.
     const onClickLeft = (idx) => {
         if(postIndex[idx] > 0) {
@@ -36,9 +43,24 @@ const HomeContainer = () => {
         }
     }
 
+    const setLike = (postId) => {
+        withJwtAxios.get("/like", {params: {postId: postId}})
+            .then((res) => {
+                setPostList(res.data.postList);
+            });
+    }
+
+    const deleteLike = (postId) => {
+        withJwtAxios.delete("/like", {params: {postId: postId}})
+            .then((res) => {
+                setPostList(res.data.postList);
+            });
+    }
+
     return (
         <div className={style.home_container}>
-            <PostRender postList={postList} setPostList={setPostList} postIndex={postIndex} chatIsOpen={chatIsOpen} setChatIsOpen={setChatIsOpen} onClickLeft={onClickLeft} onClickRight={onClickRight}/>
+            <PostRender postList={postList} setPostList={setPostList} postIndex={postIndex} chatIsOpen={chatIsOpen} setChatIsOpen={setChatIsOpen}
+                        onClickLeft={onClickLeft} onClickRight={onClickRight} setLike={setLike} deleteLike={deleteLike}/>
         </div>
     );
 };

@@ -13,20 +13,8 @@ const PostRender = (props) => {
     const onClickRight = props.onClickRight;
     const chatIsOpen = props.chatIsOpen;
     const setChatIsOpen = props.setChatIsOpen;
-
-    const setLike = (postId) => {
-        withJwtAxios.get("/like", {params: {postId: postId}})
-            .then((res) => {
-                setPostList(res.data.postList);
-            });
-    }
-
-    const deleteLike = (postId) => {
-        withJwtAxios.delete("/like", {params: {postId: postId}})
-            .then((res) => {
-                setPostList(res.data.postList);
-            });
-    }
+    const setLike = props.setLike;
+    const deleteLike = props.deleteLike;
 
     const onClickChat = (idx) => {
         const temp = JSON.parse(JSON.stringify(chatIsOpen));
@@ -76,10 +64,10 @@ const PostRender = (props) => {
                                 </div>
                                 <div className={style.post_icon_num}>
                                     <div style={{marginRight: '10px'}}>
-                                        좋아요 갯수  ,
+                                        좋아요 {post.countLike}개 ,
                                     </div>
                                     <div>
-                                        댓글 갯수
+                                        댓글 {post.countChat}개
                                     </div>
                                 </div>
                             </div>
