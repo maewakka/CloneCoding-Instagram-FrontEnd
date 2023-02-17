@@ -24,7 +24,7 @@ withJwtAxios.interceptors.response.use(
         // } else {
         //     alert(error.response.data);
         // }
-        alert(error.response.data);
+        // alert(error.response.data);
         return Promise.reject(error);
     }
 );
