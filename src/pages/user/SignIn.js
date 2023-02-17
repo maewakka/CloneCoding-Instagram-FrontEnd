@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './Sign.module.css';
 import {useNavigate} from "react-router-dom";
 import authAxios from "../../components/axios/authAxios";
 
 const SignIn = () => {
+    const [token, setToken] = useState('');
+
     const signin = [
         {name: 'email', type: 'text', placeholder: '이메일'},
         {name: 'password', type: 'password', placeholder: '비밀번호'}
@@ -28,14 +30,21 @@ const SignIn = () => {
         authAxios.post("/login", inputs)
             .then((res) => {
                 const accessToken = res.data.accessToken;
-                localStorage.setItem('accessToken', accessToken);
+                setToken(accessToken);
                 alert("로그인에 성공하였습니다!");
-                navigate("/outstagram/home");
             })
             .catch((err) => {
                 alert(err.response.data);
             });
     };
+
+    useEffect(() => {
+        if(token.length === 0) {
+            return
+        }
+        localStorage.setItem('accessToken', token);
+        navigate("/outstagram")
+    }, [token])
 
     return (
         <>

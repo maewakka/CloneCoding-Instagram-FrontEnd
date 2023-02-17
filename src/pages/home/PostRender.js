@@ -2,9 +2,7 @@ import React from 'react';
 import style from './PostRender.module.css';
 import {Static_Base_Url} from "../../index";
 import PostFile from "./PostFile";
-import withJwtAxios from "../../components/axios/withJwtAxios";
 import PostChat from "./PostChat";
-import {Modal} from "react-bootstrap";
 const PostRender = (props) => {
     const postList = props.postList;
     const setPostList = props.setPostList;
